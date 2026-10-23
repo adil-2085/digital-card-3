@@ -1,0 +1,26 @@
+/* THEME: colours, fonts, card width and the background image.
+   Edit this file to restyle the card. */
+:root{
+  color-scheme:light;
+  color-scheme:only light;       /* never let a browser re-colour the card for dark mode */
+  --maroon:#5a0f1f;
+  --deep:#3a0914;
+  --ivory:#f6efe3;
+  --paper:#d9d0bf;
+  --surround:#eadfce;            /* colour around the card on wide screens */
+  --font-script:'Great Vibes','Pinyon Script',cursive;
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-arabic:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif;
+  --card-width:480px;
+}
+/* The card is designed in light colours only (maroon on cream), so it looks the same
+   whether the phone or browser is in light or dark mode. */
+
+/* BACKGROUND: replace assets/images/background.jpg (keep the same name) to change it,
+   or point this url() at another file. Position and size can be tuned here too. */
+.bg{
+  background-color:var(--paper);
+  background-image:url("../assets/images/background.jpg");
+  background-position:center;
+  background-size:cover;
+}
