@@ -1,26 +1,60 @@
 /* THEME: colours, fonts, card width and the background image.
-   Edit this file to restyle the card. */
+   Edit this file to restyle the card.
+   Light colours are the default. The DARK MODE block is used on phones and browsers
+   that are in dark mode: deep maroon with off-white text. */
 :root{
-  color-scheme:light;
-  color-scheme:only light;       /* never let a browser re-colour the card for dark mode */
+  color-scheme:light dark;       /* the card has its own light AND dark colours, so browsers leave it alone */
+
+  /* brand colours */
   --maroon:#5a0f1f;
   --deep:#3a0914;
   --ivory:#f6efe3;
-  --paper:#d9d0bf;
+
+  /* LIGHT MODE */
+  --page-bg:#d9d0bf;
   --surround:#eadfce;            /* colour around the card on wide screens */
+  --ink:var(--maroon);           /* text, lines and the star */
+  --box-bg:var(--maroon);        /* countdown boxes and the button */
+  --box-ink:var(--ivory);
+  --box-hover:var(--deep);
+  --box-ring:transparent;
+  --panel-bg:rgba(246,239,227,.7);
+  --panel-line:rgba(90,15,31,.55);
+  --panel-ring1:rgba(246,239,227,.75);
+  --panel-ring2:rgba(90,15,31,.28);
+  --bg-base:#fff;                /* white x picture = the picture exactly as it is */
+
   --font-script:'Great Vibes','Pinyon Script',cursive;
   --font-serif:'Cormorant Garamond',Georgia,serif;
   --font-arabic:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif;
   --card-width:480px;
 }
-/* The card is designed in light colours only (maroon on cream), so it looks the same
-   whether the phone or browser is in light or dark mode. */
+
+/* DARK MODE */
+@media (prefers-color-scheme:dark){
+  :root{
+    --page-bg:#1d0910;
+    --surround:#120508;
+    --ink:var(--ivory);
+    --box-bg:#2b0811;
+    --box-ink:var(--ivory);
+    --box-hover:#3d0c18;
+    --box-ring:rgba(246,239,227,.35);
+    --panel-bg:rgba(34,8,15,.55);
+    --panel-line:rgba(246,239,227,.4);
+    --panel-ring1:rgba(34,8,15,.55);
+    --panel-ring2:rgba(246,239,227,.22);
+    --bg-base:#6b1a2a;           /* maroon x picture = the same florals in deep maroon */
+  }
+}
 
 /* BACKGROUND: replace assets/images/background.jpg (keep the same name) to change it,
-   or point this url() at another file. Position and size can be tuned here too. */
-.bg{
-  background-color:var(--paper);
+   or point this url() at another file. Position and size can be tuned here too.
+   The picture is multiplied with --bg-base, so the colour follows light or dark mode. */
+.bg{background-color:var(--bg-base)}
+.bg::before{
   background-image:url("../assets/images/background.jpg");
   background-position:center;
   background-size:cover;
+  mix-blend-mode:multiply;
 }
